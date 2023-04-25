@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/mainstack-logo.png";
 import Avatar from "../assets/images/avatar.png";
 import { IconContext } from "react-icons";
+import PageViewsChart from "./sections/PageViewsChart";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -138,7 +139,9 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-              <div className="border rounded-xl h-[500px] my-10">H</div>
+              <div className="border rounded-xl h-[500px] my-10">
+                <PageViewsChart />
+              </div>
               <div className="border rounded-xl h-[500px] my-10">H</div>
             </div>
           </main>
