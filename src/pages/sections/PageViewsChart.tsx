@@ -38,6 +38,11 @@ const views = {
 
 export const options = {
   responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
 };
 
 const labels = Object.keys(views);
@@ -47,10 +52,11 @@ export const data = {
   datasets: [
     {
       fill: true,
-      label: "Dataset 2",
+      stepped: false,
+      label: "",
       data: Object.values(views),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      borderColor: "#FF5403",
+      backgroundColor: "rgba(255, 84, 3, 0.2)",
     },
   ],
 };

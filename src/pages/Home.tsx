@@ -15,6 +15,8 @@ import Logo from "../assets/images/mainstack-logo.png";
 import Avatar from "../assets/images/avatar.png";
 import { IconContext } from "react-icons";
 import PageViewsChart from "./sections/PageViewsChart";
+import { GetDashboardDataApi } from "../services/api";
+import { useEffect } from "react";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -55,6 +57,19 @@ const SideMenuItems = [
 ];
 
 const Home = () => {
+  const getData = async () => {
+    try {
+      const res = await GetDashboardDataApi();
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <IconContext.Provider value={{ size: "22px" }}>
       <div className="grid min-h-screen grid-cols-[auto_1fr] justify-center overflow-hidden">
