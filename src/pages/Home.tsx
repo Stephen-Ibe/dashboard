@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { MdOutlineDashboard } from "react-icons/md";
 import Logo from "../assets/images/mainstack-logo.png";
 
 const dateRanges = [
@@ -59,7 +60,8 @@ const Home = () => {
         </div>
         <div className="my-10">
           <ul className="">
-            <li className="px-6 border-l-4 border-secondary-orange font-semibold text-secondary-orange">
+            <li className="px-6 border-l-4 border-secondary-orange font-semibold text-secondary-orange flex items-center gap-x-2">
+              <MdOutlineDashboard />
               Dashboard
             </li>
             <li>Item 1</li>
@@ -86,39 +88,20 @@ const Home = () => {
                 View Analytics
               </Link>
             </div>
-          </div>
 
-          <h1>Main content</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Quod
-            expedita voluptate cumque dicta minima temporibus quae consectetur
-            pariatur, architecto accusamus. Et quod quos sit, deleniti rerum
-            odio numquam reiciendis ipsa!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Quod
-            expedita voluptate cumque dicta minima temporibus quae consectetur
-            pariatur, architecto accusamus. Et quod quos sit, deleniti rerum
-            odio numquam reiciendis ipsa!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Quod
-            expedita voluptate cumque dicta minima temporibus quae consectetur
-            pariatur, architecto accusamus. Et quod quos sit, deleniti rerum
-            odio numquam reiciendis ipsa!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Quod
-            expedita voluptate cumque dicta minima temporibus quae consectetur
-            pariatur, architecto accusamus. Et quod quos sit, deleniti rerum
-            odio numquam reiciendis ipsa!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Quod
-            expedita voluptate cumque dicta minima temporibus quae consectetur
-            pariatur, architecto accusamus. Et quod quos sit, deleniti rerum
-            odio numquam reiciendis ipsa!
-          </p>
+            <div className="date--range">
+              {dateRanges.map(({ id, title, isActive }) => (
+                <div
+                  className={`${isActive && "isActive"} date--range-pill`}
+                  key={id}
+                >
+                  {title}
+                </div>
+              ))}
+            </div>
+            <div className="border rounded-xl h-[500px] my-10">H</div>
+            <div className="border rounded-xl h-[500px] my-10">H</div>
+          </div>
         </main>
       </div>
     </div>
