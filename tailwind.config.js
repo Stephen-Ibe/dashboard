@@ -6,6 +6,7 @@ export default {
       colors: {
         "secondary-orange": "#FF5403",
         "dark-shade": "#31373d",
+        "dark-shade-light": "#4D5760",
       },
     },
   },

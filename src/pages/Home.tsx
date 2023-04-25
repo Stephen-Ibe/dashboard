@@ -63,7 +63,7 @@ const Home = () => {
               <img src={Logo} alt="mainstack_logo" />
             </div>
             <div className="my-10">
-              <ul className="space-y-7">
+              <ul className="space-y-7 text-dark-shade-light">
                 {SideMenuItems.map(
                   ({ id, title, icon, isActive, heading, subItems }) =>
                     heading ? (
@@ -102,7 +102,9 @@ const Home = () => {
           <div className="px-6 flex items-center justify-between cursor-pointer">
             <div className="flex items-center gap-x-2">
               <img src={Avatar} alt="avatar" className="rounded-full" />
-              <h4 className="hidden lg:block">Blessing Daniels</h4>
+              <h4 className="hidden lg:block font-semibold text-dark-shade-light">
+                Blessing Daniels
+              </h4>
             </div>
             <MdMoreHoriz className="hidden lg:block" />
           </div>
