@@ -12,14 +12,25 @@
 
     color-scheme: light;
     color: #131316;
-    background-color: #e5e5e5;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+  }
+}
 
-    
+@layer utilities {
+  .date--range {
+    @apply space-x-5 w-fit flex;
+  }
+  .date--range-pill {
+    @apply border rounded-full px-4 py-2 text-sm font-semibold cursor-pointer text-dark-shade;
+  }
+  .date--range .isActive {
+    @apply border-secondary-orange text-secondary-orange;
+    background: #ffddcd;
+    border-radius: 100px;
   }
 }
