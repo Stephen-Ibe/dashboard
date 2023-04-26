@@ -63,10 +63,10 @@ const Home = () => {
     graph_data: { views: {} },
   });
 
-  const addViews = useMemo(() => {
+  const addViews = useMemo((): number => {
     const views = Object.values(data?.graph_data?.views);
     const viewSum = views.reduce((a: any, b: any) => a + b, 0);
-    return viewSum;
+    return Number(viewSum);
   }, [data]);
 
   const getData = async () => {
@@ -188,7 +188,15 @@ const Home = () => {
                   </div>
                 )}
               </div>
-              <div className="border rounded-xl h-[500px] my-10">H</div>
+              <div className="h-[500px] my-10 grid grid-cols-2 gap-x-4">
+                <div className="border rounded-xl p-6">
+                  <div>
+                    <h4>Top Location</h4>
+                    <Link to="/">View Full Reports</Link>
+                  </div>
+                </div>
+                <div className="border rounded-xl ">H</div>
+              </div>
             </div>
           </main>
         </div>
