@@ -33,6 +33,7 @@ const formatDates = (dates: string[]): string[] => {
     const monthName = new Date(date).toLocaleString("default", {
       month: "long",
     });
+    console.error(year, month);
     return `${parseInt(day)} ${monthName}`;
   });
 };
