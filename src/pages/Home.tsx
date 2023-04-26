@@ -188,11 +188,16 @@ const Home = () => {
                   </div>
                 )}
               </div>
-              <div className="h-[500px] my-10 grid grid-cols-2 gap-x-4">
+              <div className="h-[500px] my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="border rounded-xl p-6">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold">Top Locations</h4>
+                    <Link to="/" className="text-xs">
+                      View full reports
+                    </Link>
+                  </div>
                   <div>
-                    <h4>Top Location</h4>
-                    <Link to="/">View Full Reports</Link>
+                    
                   </div>
                 </div>
                 <div className="border rounded-xl ">H</div>
