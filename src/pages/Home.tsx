@@ -20,6 +20,7 @@ import { GetDashboardDataApi } from "../services/api";
 import { useEffect, useMemo, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import TopLocationsChart from "./sections/TopLocationsChart";
+import TopReferralSource from "./sections/TopReferralSource";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -75,11 +76,11 @@ const Home = () => {
     setLoading(true);
     try {
       const res = await GetDashboardDataApi();
-      console.log(res);
       setData(res);
       setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
 
@@ -191,11 +192,20 @@ const Home = () => {
                 )}
               </div>
               <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <TopLocationsChart
-                  loading={loading}
-                  graphData={data?.top_locations}
-                />
-                <div className="border rounded-xl ">H</div>
+                {loading ? (
+                  ""
+                ) : (
+                  <>
+                    <TopLocationsChart
+                      loading={loading}
+                      graphData={data?.top_locations}
+                    />
+                    <TopReferralSource
+                      loading={loading}
+                      graphData={data?.top_sources}
+                    />
+                  </>
+                )}
               </div>
             </div>
           </main>

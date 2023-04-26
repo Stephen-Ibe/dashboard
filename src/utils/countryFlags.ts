@@ -6,6 +6,10 @@ const COUNTRY_FLAG = {
   "United Kingdom": "🇬🇧",
 } as any;
 
+const SOURCE_LOGO = {
+  
+}
+
 export const x = {
   COUNTRY_FLAG,
 };
