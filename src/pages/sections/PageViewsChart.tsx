@@ -27,7 +27,19 @@ type Props = {
   graphData: any;
 };
 
+const formatDates = (dates: string[]): string[] => {
+  return dates.map((date) => {
+    const [year, month, day] = date.split("-");
+    const monthName = new Date(date).toLocaleString("default", {
+      month: "long",
+    });
+    return `${parseInt(day)} ${monthName}`;
+  });
+};
+
 export const PageViewsChart = ({ graphData }: Props) => {
+  const formattedDates = formatDates(Object.keys(graphData));
+
   const lineOptions = {
     responsive: true,
     plugins: {
@@ -45,7 +57,7 @@ export const PageViewsChart = ({ graphData }: Props) => {
   };
 
   const data = {
-    labels: Object.keys(graphData),
+    labels: formattedDates,
     datasets: [
       {
         fill: true,
