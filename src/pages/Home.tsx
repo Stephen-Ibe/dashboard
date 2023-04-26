@@ -2,6 +2,7 @@ import {
   MdAlarm,
   MdFilePresent,
   MdGroup,
+  MdInfoOutline,
   MdMoreHoriz,
   MdOutlineDashboard,
   MdOutlineEdit,
@@ -16,7 +17,7 @@ import Avatar from "../assets/images/avatar.png";
 import { IconContext } from "react-icons";
 import PageViewsChart from "./sections/PageViewsChart";
 import { GetDashboardDataApi } from "../services/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -57,10 +58,17 @@ const SideMenuItems = [
 ];
 
 const Home = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<Record<string, any>>({
+    graph_data: { views: {} },
+  });
   const getData = async () => {
+    setLoading(true);
     try {
       const res = await GetDashboardDataApi();
       console.log(res);
+      setData(res);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -154,8 +162,22 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-              <div className="border rounded-xl h-[500px] my-10">
-                <PageViewsChart />
+              <div className="my-10">
+                {loading ? (
+                  ""
+                ) : (
+                  <div className="border rounded-xl p-6">
+                    <div className="mb-10 flex items-center justify-between border">
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-xl">Page Views</h4>
+                        <p className="text-sm text-dark-shade">All Time</p>
+                      </div>
+                      <MdInfoOutline />
+                    </div>
+                    <div></div>
+                    <PageViewsChart graphData={data?.graph_data?.views} />
+                  </div>
+                )}
               </div>
               <div className="border rounded-xl h-[500px] my-10">H</div>
             </div>

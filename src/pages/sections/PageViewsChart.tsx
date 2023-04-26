@@ -23,46 +23,42 @@ ChartJS.register(
   Legend
 );
 
-const views = {
-  "2022-07-31": 1,
-  "2022-08-01": 3,
-  "2022-08-02": 3,
-  "2022-08-03": 7,
-  "2022-08-04": 8,
-  "2022-08-05": 5,
-  "2022-08-06": 20,
-  "2022-08-07": 50,
-  "2022-08-08": 100,
-  "2022-08-09": 2,
+type Props = {
+  graphData: any;
 };
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
+export const PageViewsChart = ({ graphData }: Props) => {
+  const lineOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
-  },
-};
-
-const labels = Object.keys(views);
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      fill: true,
-      stepped: false,
-      label: "",
-      data: Object.values(views),
-      borderColor: "#FF5403",
-      backgroundColor: "rgba(255, 84, 3, 0.2)",
+    scales: {
+      x: {
+        grid: { display: false, drawBorder: false, lineThickness: 0 },
+        gridLine: { drawBorder: false },
+      },
+      y: { border: { dash: [4, 4] } },
     },
-  ],
-};
+  };
 
-const PageViewsChart = () => {
-  return <Line options={options} data={data} />;
+  const data = {
+    labels: Object.keys(graphData),
+    datasets: [
+      {
+        fill: true,
+        stepped: false,
+        label: "",
+        data: Object.values(graphData),
+        borderColor: "#FF5403",
+        backgroundColor: "rgba(255, 84, 3, 0.2)",
+      },
+    ],
+  };
+
+  return <Line options={lineOptions} data={data} />;
 };
 
 export default PageViewsChart;
