@@ -1,8 +1,6 @@
-import React, { useMemo } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
-import { DoughnutGraph } from "../../components";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
 import { Link } from "react-router-dom";
+import { DoughnutGraph } from "../../components";
 import { x } from "../../utils/countryFlags";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -23,9 +21,9 @@ const TopLocationsChart = ({ loading, graphData }: Props) => {
   }));
 
   return (
-    <div className="border rounded-xl py-10 px-10">
+    <div className="px-10 py-10 border rounded-xl">
       <div className="flex items-center justify-between">
-        <h4 className="font-semibold text-xl">Top Locations</h4>
+        <h4 className="text-xl font-semibold">Top Locations</h4>
         <Link to="/" className="text-sm">
           View full reports
         </Link>
@@ -33,7 +31,7 @@ const TopLocationsChart = ({ loading, graphData }: Props) => {
       {loading ? (
         ""
       ) : (
-        <div className="grid grid-cols-2 items-center justify-center mt-8 gap-x-4">
+        <div className="grid items-center justify-center grid-cols-2 mt-8 gap-x-4">
           <div className="space-y-8">
             {locationData?.map(({ country, percent, flag }: any) => (
               <p key={country}>
@@ -42,7 +40,7 @@ const TopLocationsChart = ({ loading, graphData }: Props) => {
               </p>
             ))}
           </div>
-          <div className="border-0 flex items-center justify-center">
+          <div className="flex items-center justify-center border-0">
             <DoughnutGraph labels={countries} graphData={counts} />
           </div>
         </div>

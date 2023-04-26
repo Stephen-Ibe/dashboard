@@ -1,5 +1,6 @@
 {
   "name": "assessment-test",
+  "description": "Simple Dashboard with Chart Integrations",
   "private": true,
   "version": "0.0.0",
   "type": "module",

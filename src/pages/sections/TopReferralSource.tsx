@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { DoughnutGraph } from "../../components";
 import { x } from "../../utils/countryFlags";
@@ -20,9 +19,9 @@ const TopReferralSource = ({ loading, graphData }: Props) => {
   }));
 
   return (
-    <div className="border rounded-xl py-10 px-10">
+    <div className="px-10 py-10 border rounded-xl">
       <div className="flex items-center justify-between">
-        <h4 className="font-semibold text-xl">Top Referral Source</h4>
+        <h4 className="text-xl font-semibold">Top Referral Source</h4>
         <Link to="/" className="text-sm">
           View full reports
         </Link>
@@ -30,12 +29,12 @@ const TopReferralSource = ({ loading, graphData }: Props) => {
       {loading ? (
         ""
       ) : (
-        <div className="grid grid-cols-2 items-center justify-center mt-8 gap-x-4">
+        <div className="grid items-center justify-center grid-cols-2 mt-8 gap-x-4">
           <div className="space-y-8">
             <IconContext.Provider value={{ size: "16px" }}>
               {locationData?.map(({ source, percent, logo }: any) => (
                 <div
-                  className="capitalize flex items-center space-x-2"
+                  className="flex items-center space-x-2 capitalize"
                   key={source}
                 >
                   <span>{logo}</span> <p> {source}</p>
@@ -44,7 +43,7 @@ const TopReferralSource = ({ loading, graphData }: Props) => {
               ))}
             </IconContext.Provider>
           </div>
-          <div className="border-0 flex items-center justify-center">
+          <div className="flex items-center justify-center border-0">
             <DoughnutGraph labels={sources} graphData={counts} />
           </div>
         </div>

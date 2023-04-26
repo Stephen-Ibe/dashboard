@@ -1,4 +1,3 @@
-import React from "react";
 import { FaFacebookF, FaGoogle, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const COUNTRY_FLAG = {

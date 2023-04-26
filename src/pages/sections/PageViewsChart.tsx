@@ -1,14 +1,13 @@
-import React from "react";
 import {
-  Chart as ChartJS,
   CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
+  Chart as ChartJS,
   Filler,
   Legend,
+  LineElement,
+  LinearScale,
+  PointElement,
+  Title,
+  Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -29,6 +28,7 @@ type Props = {
 
 const formatDates = (dates: string[]): string[] => {
   return dates.map((date) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [year, month, day] = date.split("-");
     const monthName = new Date(date).toLocaleString("default", {
       month: "long",

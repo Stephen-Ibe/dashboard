@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from "react";
+import { IconContext } from "react-icons";
 import {
   MdAlarm,
   MdFilePresent,
@@ -12,13 +14,10 @@ import {
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { TbCameraPlus } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/mainstack-logo.png";
 import Avatar from "../assets/images/avatar.png";
-import { IconContext } from "react-icons";
-import PageViewsChart from "./sections/PageViewsChart";
+import Logo from "../assets/images/mainstack-logo.png";
 import { GetDashboardDataApi } from "../services/api";
-import { useEffect, useMemo, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import PageViewsChart from "./sections/PageViewsChart";
 import TopLocationsChart from "./sections/TopLocationsChart";
 import TopReferralSource from "./sections/TopReferralSource";
 
@@ -93,7 +92,7 @@ const Home = () => {
       <div className="grid min-h-screen grid-cols-[auto_1fr] justify-center overflow-hidden">
         <aside className="md:flex h-[calc(100vh_-_.0rem)] sm:w-20 lg:w-72 py-6 flex-col justify-between border-r hidden">
           <div>
-            <div className="logo px-6">
+            <div className="px-6 logo">
               <img src={Logo} alt="mainstack_logo" />
             </div>
             <div className="my-10">
@@ -102,14 +101,14 @@ const Home = () => {
                   ({ id, title, icon, isActive, heading, subItems }) =>
                     heading ? (
                       <div className="px-6 pt-4" key={id}>
-                        <h4 className="uppercase text-sm hidden lg:block">
+                        <h4 className="hidden text-sm uppercase lg:block">
                           {heading}
                         </h4>
-                        <ul className="space-y-7 mt-6">
+                        <ul className="mt-6 space-y-7">
                           {subItems.map(({ id, title, icon }) => (
                             <li
                               key={id}
-                              className="flex items-center gap-x-3 font-semibold cursor-pointer"
+                              className="flex items-center font-semibold cursor-pointer gap-x-3"
                             >
                               {icon}
                               <span className="hidden lg:block">{title}</span>
@@ -133,10 +132,10 @@ const Home = () => {
               </ul>
             </div>
           </div>
-          <div className="px-6 flex items-center justify-between cursor-pointer">
+          <div className="flex items-center justify-between px-6 cursor-pointer">
             <div className="flex items-center gap-x-2">
               <img src={Avatar} alt="avatar" className="rounded-full" />
-              <h4 className="hidden lg:block font-semibold text-dark-shade-light">
+              <h4 className="hidden font-semibold lg:block text-dark-shade-light">
                 Blessing Daniels
               </h4>
             </div>
@@ -144,12 +143,12 @@ const Home = () => {
           </div>
         </aside>
         <div className="h-[calc(100vh_-_0rem)] w-full overflow-y-scroll">
-          <main className="min-h-screen w-full py-6 px-10">
+          <main className="w-full min-h-screen px-10 py-6">
             <div className="container mx-auto">
               <div className="header">
-                <h1 className="font-bold text-xl">Dashboard</h1>
+                <h1 className="text-xl font-bold">Dashboard</h1>
               </div>
-              <div className="db--heading my-8 flex items-center justify-between">
+              <div className="flex items-center justify-between my-8 db--heading">
                 <div className="space-y-1">
                   <h2 className="text-xl font-semibold">
                     Good Morning, Blessing ⛅️
@@ -157,7 +156,7 @@ const Home = () => {
                   <p className="text-xs">Check out your dashboard summary.</p>
                 </div>
 
-                <Link to="/" className="text-secondary-orange text-sm">
+                <Link to="/" className="text-sm text-secondary-orange">
                   View Analytics
                 </Link>
               </div>
@@ -176,10 +175,10 @@ const Home = () => {
                 {loading ? (
                   ""
                 ) : (
-                  <div className="border rounded-xl p-6">
-                    <div className="mb-5 flex items-center justify-between">
+                  <div className="p-6 border rounded-xl">
+                    <div className="flex items-center justify-between mb-5">
                       <div className="space-y-2">
-                        <h4 className="font-semibold text-xl">Page Views</h4>
+                        <h4 className="text-xl font-semibold">Page Views</h4>
                         <p className="text-sm text-dark-shade">All Time</p>
                       </div>
                       <MdInfoOutline />
@@ -191,7 +190,7 @@ const Home = () => {
                   </div>
                 )}
               </div>
-              <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 my-10 md:grid-cols-2">
                 {loading ? (
                   ""
                 ) : (
