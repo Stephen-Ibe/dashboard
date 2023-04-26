@@ -18,6 +18,8 @@ import { IconContext } from "react-icons";
 import PageViewsChart from "./sections/PageViewsChart";
 import { GetDashboardDataApi } from "../services/api";
 import { useEffect, useMemo, useState } from "react";
+import { Doughnut } from "react-chartjs-2";
+import TopLocationsChart from "./sections/TopLocationsChart";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -188,7 +190,7 @@ const Home = () => {
                   </div>
                 )}
               </div>
-              <div className="h-[500px] my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="border rounded-xl p-6">
                   <div className="flex items-center justify-between">
                     <h4 className="font-semibold">Top Locations</h4>
@@ -196,8 +198,17 @@ const Home = () => {
                       View full reports
                     </Link>
                   </div>
-                  <div>
-                    
+                  <div className="grid grid-cols-2 items-center justify-center mt-8">
+                    {loading ? (
+                      ""
+                    ) : (
+                      <>
+                        <div className="border">H</div>
+                        <div className="">
+                          <TopLocationsChart graphData={data?.top_locations} />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="border rounded-xl ">H</div>
