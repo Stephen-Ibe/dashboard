@@ -17,7 +17,7 @@ import Avatar from "../assets/images/avatar.png";
 import { IconContext } from "react-icons";
 import PageViewsChart from "./sections/PageViewsChart";
 import { GetDashboardDataApi } from "../services/api";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const dateRanges = [
   { id: 0, title: "1 Day" },
@@ -62,6 +62,13 @@ const Home = () => {
   const [data, setData] = useState<Record<string, any>>({
     graph_data: { views: {} },
   });
+
+  const addViews = useMemo(() => {
+    const views = Object.values(data?.graph_data?.views);
+    const viewSum = views.reduce((a: any, b: any) => a + b, 0);
+    return viewSum;
+  }, [data]);
+
   const getData = async () => {
     setLoading(true);
     try {
@@ -167,14 +174,16 @@ const Home = () => {
                   ""
                 ) : (
                   <div className="border rounded-xl p-6">
-                    <div className="mb-10 flex items-center justify-between border">
+                    <div className="mb-5 flex items-center justify-between">
                       <div className="space-y-2">
                         <h4 className="font-semibold text-xl">Page Views</h4>
                         <p className="text-sm text-dark-shade">All Time</p>
                       </div>
                       <MdInfoOutline />
                     </div>
-                    <div></div>
+                    <div className="mb-8">
+                      <h4 className="text-4xl font-bold">{addViews}</h4>
+                    </div>
                     <PageViewsChart graphData={data?.graph_data?.views} />
                   </div>
                 )}
