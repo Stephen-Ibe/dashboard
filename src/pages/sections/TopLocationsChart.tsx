@@ -20,8 +20,6 @@ const TopLocationsChart = ({ graphData }: Props) => {
     },
   };
 
-  console.log(countries, graphData);
-
   const data = {
     labels: countries,
     datasets: [
